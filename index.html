@@ -2113,6 +2113,114 @@
       flex: 0 0 auto;
     }
 
+
+    /* === MAIN DASHBOARD TARGET YEAR BADGE === */
+    .status-card.approved-home-card .approved-card-heading {
+      align-items: flex-start !important;
+      gap: 14px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .approved-card-title-wrap {
+      display: flex;
+      flex: 1 1 auto;
+      min-width: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding-right: 52px;
+    }
+
+    .status-card.approved-home-card .approved-card-title-wrap h3 {
+      width: 100%;
+      max-width: none !important;
+      margin: 0 !important;
+    }
+
+    .approved-card-info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 18px;
+      min-width: 0;
+    }
+
+    .status-card.approved-home-card .approved-card-meta {
+      flex: 1 1 auto;
+      min-width: 0;
+      margin: 0 !important;
+      font-size: 12px !important;
+      line-height: 1.45 !important;
+    }
+
+    .approved-target-sidebox {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      position: relative;
+      top: -3px;
+      width: fit-content;
+      max-width: 58%;
+      min-height: 34px;
+      padding: 6px 11px;
+      border: 1px solid #bfe3b4;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #f1faed 0%, #e8f6e2 100%);
+      color: #168300;
+      box-shadow: none;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .approved-target-sidebox-label {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #168300;
+      white-space: nowrap;
+    }
+
+    .approved-target-sidebox-label::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 999px;
+      background: #79c33a;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .approved-card-title-wrap {
+        padding-right: 44px;
+        gap: 8px;
+      }
+
+      .approved-card-info-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .approved-target-sidebox {
+        flex-basis: auto;
+        min-width: 0;
+        max-width: 100%;
+        width: fit-content;
+        min-height: 32px;
+        padding: 6px 10px;
+      }
+
+      .approved-target-sidebox-label {
+        font-size: 10.5px;
+      }
+    }
+
   
     /* === DETAIL DASHBOARD OVERLAY === */
     body.detail-dashboard-open {
@@ -3648,10 +3756,11 @@
 
     #approvedStatusCards .status-card.approved-home-card h3 {
       max-width: 100% !important;
-      min-height: 68px !important;
+      min-height: 64px !important;
       margin: 0 0 9px !important;
-      font-size: 18px !important;
-      line-height: 1.36 !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      line-height: 1.38 !important;
       -webkit-line-clamp: 3 !important;
     }
 
@@ -5460,16 +5569,31 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
         const title = getTitle(item);
         const stats = getStats(item);
         const orderNumber = Number(index || 0) + 1;
+        const rawEndYear = String(item?.planInfo?.endYear || '').trim();
+        const endYear = rawEndYear.replace(/[^0-9]/g, '');
+        const targetBox = endYear
+          ? `
+              <div class="approved-target-sidebox">
+                <div class="approved-target-sidebox-label">เปรียบเทียบกับเป้าหมาย พ.ศ. ${escapeHtml(endYear)}</div>
+              </div>
+            `
+          : '';
+
         return `
           <div class="status-card approved-home-card" data-approved-id="${escapeHtml(item.id)}">
             <button type="button" class="status-arrow detail-open-btn" data-dashboard-id="${escapeHtml(item.id)}" aria-label="ดูรายละเอียดของ ${escapeHtml(title)}">ดูรายละเอียด <span>›</span></button>
             <div class="approved-card-heading">
               <span class="approved-card-seq">${orderNumber}</span>
-              <h3>${escapeHtml(title)}</h3>
+              <div class="approved-card-title-wrap">
+                <h3>${escapeHtml(title)}</h3>
+              </div>
             </div>
-            <div class="approved-card-meta">
-              หน่วยงาน: ${escapeHtml(getAgency(item))}<br>
-              ส่งเมื่อ: ${escapeHtml(item.submittedAt || '-')}
+            <div class="approved-card-info-row">
+              <div class="approved-card-meta">
+                หน่วยงาน: ${escapeHtml(getAgency(item))}<br>
+                ส่งเมื่อ: ${escapeHtml(item.submittedAt || '-')}
+              </div>
+              ${targetBox}
             </div>
             <div class="metric-count indicator-count-pill">${stats.total || 0} ตัวชี้วัด</div>
             <div class="progress-label">บรรลุเป้าหมาย</div>
@@ -5495,7 +5619,6 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
               </div>
               <div class="percent red-text">${stats.belowPct}%</div>
             </div>
-
           </div>
         `;
       }
@@ -5926,11 +6049,9 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
         if (!node) return '';
         let baseHtml = decodeB64Utf8(node.textContent);
 
-        // Remove the old wording embedded inside the Base64 dashboard source.
         baseHtml = baseHtml
           .replaceAll('ตัวชี้วัดต่ำกว่าเป้าหมายระดับเสี่ยง', 'ตัวชี้วัดต่ำกว่าเป้าหมาย')
           .replaceAll('ต่ำกว่าเป้าหมายระดับเสี่ยง', 'ต่ำกว่าเป้าหมาย');
-
         const itemJson = JSON.stringify(item || {}).replace(/</g, '\\u003c');
 
         const patch = `
