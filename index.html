@@ -4301,7 +4301,7 @@
 
   <section class="dashboard-section" id="dashboard">
     <div class="container">
-      <div class="dashboard-title">สถานะการดำเนินงานของนโยบายและแผนด้านดิจิทัลประเทศไทย</div>
+      <div class="dashboard-title">สถานะการดำเนินงานของนโยบายและแผนด้านดิจิทัลของประเทศไทย</div>
       <div class="title-underline"></div>
 
             <div class="dashboard-grid" id="homepageDashboardGrid">
@@ -5125,7 +5125,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
             <p class="approval-item-meta">
               หน่วยงาน: ${escapeHtml(getAgency(item))}<br>
               ส่งเมื่อ: ${escapeHtml(item.submittedAt || '-') }<br>
-              ${stats.total} ตัวชี้วัด • บรรลุเป้าหมาย ${stats.completed} • ใกล้เคียงเป้าหมาย ${stats.onPlan} • ต่ำกว่าเป้าหมายระดับเสี่ยง ${stats.below}
+              ${stats.total} ตัวชี้วัด • บรรลุเป้าหมาย ${stats.completed} • ใกล้เคียงเป้าหมาย ${stats.onPlan} • ต่ำกว่าเป้าหมาย ${stats.below}
             </p>
             <div class="approval-actions">
               ${
@@ -5219,7 +5219,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
         // ใช้เกณฑ์เดียวกับ Dashboard ด้านใน: เขียว 100, เหลือง 80–99, แดงต่ำกว่า 80
         if (progress >= 100) return { key: 'completed', label: 'บรรลุเป้าหมาย' };
         if (progress >= 80) return { key: 'onplan', label: 'ใกล้เคียงเป้าหมาย' };
-        return { key: 'below', label: 'ต่ำกว่าเป้าหมายระดับเสี่ยง' };
+        return { key: 'below', label: 'ต่ำกว่าเป้าหมาย' };
       }
 
       function renderOverallTargets(item) {
@@ -5264,7 +5264,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
               <div class="detail-summary-kpi-card below">
                 <div class="detail-donut" style="--p:${belowPct}"><span>${belowPct}%</span></div>
                 <div>
-                  <div class="detail-kpi-label">ตัวชี้วัดต่ำกว่าเป้าหมายระดับเสี่ยง</div>
+                  <div class="detail-kpi-label">ตัวชี้วัดต่ำกว่าเป้าหมาย</div>
                   <div class="detail-kpi-count">${stats.below}<small>ตัวชี้วัด</small></div>
                   <div class="detail-kpi-sub">จากทั้งหมด ${stats.total} ตัวชี้วัด</div>
                 </div>
@@ -5378,7 +5378,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
                     <div class="detail-mini-metric-value" style="color:#d6aa00;">${stats.onPlan}</div>
                   </div>
                   <div class="detail-mini-metric">
-                    <div class="detail-mini-metric-label">ต่ำกว่าเป้าหมายระดับเสี่ยง</div>
+                    <div class="detail-mini-metric-label">ต่ำกว่าเป้าหมาย</div>
                     <div class="detail-mini-metric-value" style="color:#db3f3f;">${stats.below}</div>
                   </div>
                   <div class="detail-mini-metric">
@@ -5407,7 +5407,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
               <div class="detail-stat-note">${stats.onPlanPct}% ของตัวชี้วัดทั้งหมด</div>
             </div>
             <div class="detail-stat-card below">
-              <div class="detail-stat-label">ต่ำกว่าเป้าหมายระดับเสี่ยง</div>
+              <div class="detail-stat-label">ต่ำกว่าเป้าหมาย</div>
               <div class="detail-stat-value">${stats.below}</div>
               <div class="detail-stat-note">${stats.belowPct}% ของตัวชี้วัดทั้งหมด</div>
             </div>
@@ -5488,7 +5488,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
               <div class="percent yellow-text">${stats.onPlanPct}%</div>
             </div>
 
-            <div class="progress-label">ต่ำกว่าเป้าหมายระดับเสี่ยง</div>
+            <div class="progress-label">ต่ำกว่าเป้าหมาย</div>
             <div class="progress-row">
               <div class="progress-bar">
                 <div class="progress-fill red" style="width:${stats.belowPct}%"></div>
@@ -5860,7 +5860,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
                     <div class="detail-mini-metrics">
                       <div class="detail-mini-metric"><div class="detail-mini-metric-label">บรรลุเป้าหมาย</div><div class="detail-mini-metric-value" style="color:#61b92f;">${completed}</div></div>
                       <div class="detail-mini-metric"><div class="detail-mini-metric-label">ใกล้เคียงเป้าหมาย</div><div class="detail-mini-metric-value" style="color:#d6aa00;">${onPlan}</div></div>
-                      <div class="detail-mini-metric"><div class="detail-mini-metric-label">ต่ำกว่าเป้าหมายระดับเสี่ยง</div><div class="detail-mini-metric-value" style="color:#db3f3f;">${below}</div></div>
+                      <div class="detail-mini-metric"><div class="detail-mini-metric-label">ต่ำกว่าเป้าหมาย</div><div class="detail-mini-metric-value" style="color:#db3f3f;">${below}</div></div>
                       <div class="detail-mini-metric"><div class="detail-mini-metric-label">ทั้งหมด</div><div class="detail-mini-metric-value">${total}</div></div>
                     </div>
                   </div>
@@ -6178,7 +6178,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
                     return text.includes('ตัวชี้วัด') && (
                       text.includes('บรรลุเป้าหมาย') ||
                       text.includes('ใกล้เคียงเป้าหมาย') ||
-                      text.includes('ต่ำกว่าเป้าหมายระดับเสี่ยง')
+                      text.includes('ต่ำกว่าเป้าหมาย')
                     );
                   });
                 }
@@ -6192,7 +6192,7 @@ PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InRoIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRG
                   const text = (card.textContent || '').trim();
                   if (text.includes('บรรลุเป้าหมาย')) return 0;
                   if (text.includes('ใกล้เคียงเป้าหมาย')) return 1;
-                  if (text.includes('ต่ำกว่าเป้าหมายระดับเสี่ยง')) return 2;
+                  if (text.includes('ต่ำกว่าเป้าหมาย')) return 2;
                   return 99;
                 };
 
